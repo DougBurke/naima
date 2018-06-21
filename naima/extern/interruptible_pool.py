@@ -22,8 +22,12 @@ Contributed by Peter K. G. Williams <peter@newton.cx>.
 
 """
 
-from __future__ import (division, print_function, absolute_import,
-                        unicode_literals)
+from __future__ import (
+    division,
+    print_function,
+    absolute_import,
+    unicode_literals,
+)
 
 __all__ = ["InterruptiblePool"]
 
@@ -67,11 +71,11 @@ class InterruptiblePool(Pool):
     """
     wait_timeout = 3600
 
-    def __init__(self, processes=None, initializer=None, initargs=(),
-                 **kwargs):
+    def __init__(self, processes=None, initializer=None, initargs=(), **kwargs):
         new_initializer = functools.partial(_initializer_wrapper, initializer)
-        super(InterruptiblePool, self).__init__(processes, new_initializer,
-                                                initargs, **kwargs)
+        super(InterruptiblePool, self).__init__(
+            processes, new_initializer, initargs, **kwargs
+        )
 
     def map(self, func, iterable, chunksize=None):
         """
